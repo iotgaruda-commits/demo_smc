@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="CodingTips">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="do_you_love_me.css" />
+    <link type="text/css" rel="stylesheet" href="./Love_files/default.css">
+    <title>DO you love me?</title>
+</head>
+<body>
+    <!-- Halaman Pertama: Do you love me? -->
+    <div id="first-page" class="question-container container">
+        <div class="tenor-gif-embed" data-postid="25789758" data-share-method="host" data-width="100%">
+            <a href="https://tenor.com/view/tkthao219-bubududu-gif-25789758">Tkthao219 Bubududu Sticker</a> from
+            <a href="https://tenor.com/search/tkthao219-stickers">Tkthao219 Stickers</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        <h2 class="question">Do you love me?</h2>
+        <div class="button-container">
+            <button class="yes-btn btn js-yes-btn">Yes</button>
+            <button class="no-btn btn js-no-btn">No</button>
+        </div>
+    </div>
+    <div id="result-container" class="result-container container" style="display: none;">
+        <img class="gif-result" src="cute love gif.jfif" alt="Cute love gif">
+        <h2 style="margin-top: 20px;">I knew it😍!</h2> <!-- Tulisan agak ke bawah dengan margin-top -->
+    </div>
+    <div id="loading-container" class="cssload-main" style="display: none;">
+        <div class="cssload-heart">
+            <span class="cssload-heartL"></span>
+            <span class="cssload-heartR"></span>
+            <span class="cssload-square"></span>
+        </div>
+        <div class="cssload-shadow"></div>
+    </div>
+
+    <!-- Halaman Kedua: A Love Letter (disembunyikan awalnya) -->
+    <div id="second-page" style="display: none;">
+        <div id="main">
+            <div id="error">Dear, your browser does not support the content about to be displayed. Please switch to Google Chrome (<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>) or Firefox (<a href="http://firefox.com.cn/download/">Firefox</a>)~</div>
+            <div id="wrap">
+                <div id="text">
+                    <div id="code">
+                        <span class="say">B… selamat Valentine ya ❤️</span><br><br>
+                        <span class="say">Aku sayang kamu — bukan karena kamu sempurna, tapi karena caramu ada: cara kamu ketawa tiba-tiba, cara kamu terima aku apa adanya, dan kejujuranmu walau sulit. Itu bikin aku bersyukur.</span><br>
+                        <span class="say">Aku tahu kamu sering jaga perasaan orang lain sampai kamu sendiri capek. Aku lihat itu. Aku di sini bukan buat nambah beban — aku pilih kamu karena kamu nyata, bukan karena kamu harus sempurna.</span><br>
+                        <span class="say">Terima kasih udah percaya cerita ke aku, udah ketemu walau susah, dan buat momen kecil yang hangat bareng kamu. Aku hargai itu.</span><br>
+                        <span class="say">Aku berkomitmen bukan dengan kata besar, tapi dengan tindakan kecil: hadir saat kamu butuh, dengar saat kamu capek, dan jadi tempat aman buat kamu jujur tanpa takut dihakimi.</span><br>
+                        <span class="say">Ingat: kamu boleh sayang orang lain, tapi juga berhak sayang sama diri kamu sendiri. Aku mau kamu sehat — secara emosional dan fisik. Kalau kamu capek, kamu boleh istirahat tanpa merasa mengecewakan.</span><br>
+                        <span class="say">Selamat hari Valentine. Istirahat yang nyenyak ya. Besok kita pelan-pelan lagi. Aku ada di sini, selalu. 🤍</span><br><br>
+                        <span class="say"><span class="space"></span>-- Hosea</span>
+                    </div>
+                </div>
+                <div id="clock-box">
+                    Sofi Berliana and Hosea have been together for
+                    <div id="clock"></div>
+                </div>
+                <canvas id="canvas" width="1100" height="680"></canvas>
+            </div>
+        </div>
+        <audio id="media" src="love.mp3" autoplay loop></audio>
+    </div>
+
+    <!-- Script untuk halaman pertama -->
+    <script src="do_you_love_me.js"></script>
+
+    <!-- Script untuk halaman kedua -->
+    <script type="text/javascript" src="./Love_files/jquery.min.js"></script>
+    <script type="text/javascript" src="./Love_files/jscex.min.js"></script>
+    <script type="text/javascript" src="./Love_files/jscex-parser.js"></script>
+    <script type="text/javascript" src="./Love_files/jscex-jit.js"></script>
+    <script type="text/javascript" src="./Love_files/jscex-builderbase.min.js"></script>
+    <script type="text/javascript" src="./Love_files/jscex-async.min.js"></script>
+    <script type="text/javascript" src="./Love_files/jscex-async-powerpack.min.js"></script>
+    <script type="text/javascript" src="./Love_files/functions.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./Love_files/love.js" charset="utf-8"></script>
+
+    <!-- Script untuk transisi -->
+    <script>
+        // Asumsikan do_you_love_me.js sudah menangani tombol No (misalnya bergerak), dan tombol Yes menampilkan result
+        // Tambahkan logika transisi setelah klik Yes
+        document.querySelector('.js-yes-btn').addEventListener('click', function() {
+            document.getElementById('first-page').style.display = 'none';
+            document.getElementById('result-container').style.display = 'block';
+            // Tunggu 5 detik untuk "I knew it"
+            setTimeout(function() {
+                document.getElementById('result-container').style.display = 'none';
+                document.getElementById('loading-container').style.display = 'block';
+                // Tunggu 3 detik untuk loading heart (sesuaikan jika perlu)
+                setTimeout(function() {
+                    document.getElementById('loading-container').style.display = 'none';
+                    document.getElementById('second-page').style.display = 'block';
+                    // Jalankan script pohon cinta
+                    (function () {
+                        var canvas = $('#canvas');
+                        if (!canvas[0].getContext) {
+                            $("#error").show();
+                            return false;
+                        }
+                        var width = canvas.width();
+                        var height = canvas.height();
+                        canvas.attr("width", width);
+                        canvas.attr("height", height);
+                        var opts = {
+                            seed: {
+                                x: width / 2 - 20,
+                                color: "rgb(190, 26, 37)",
+                                scale: 2
+                            },
+                            branch: [
+                                [535, 680, 570, 250, 500, 200, 30, 100, [
+                                    [540, 500, 455, 417, 340, 400, 13, 100, [
+                                        [450, 435, 434, 430, 394, 395, 2, 40]
+                                    ]],
+                                    [550, 445, 600, 356, 680, 345, 12, 100, [
+                                        [578, 400, 648, 409, 661, 426, 3, 80]
+                                    ]],
+                                    [539, 281, 537, 248, 534, 217, 3, 40],
+                                    [546, 397, 413, 247, 328, 244, 9, 80, [
+                                        [427, 286, 383, 253, 371, 205, 2, 40],
+                                        [498, 345, 435, 315, 395, 330, 4, 60]
+                                    ]],
+                                    [546, 357, 608, 252, 678, 221, 6, 100, [
+                                        [590, 293, 646, 277, 648, 271, 2, 80]
+                                    ]]
+                                ]]
+                            ],
+                            bloom: {
+                                num: 700,
+                                width: 1080,
+                                height: 650,
+                            },
+                            footer: {
+                                width: 1200,
+                                height: 5,
+                                speed: 10,
+                            }
+                        }
+                        var tree = new Tree(canvas[0], width, height, opts);
+                        var seed = tree.seed;
+                        var foot = tree.footer;
+                        var hold = 1;
+                        canvas.click(function (e) {
+                            var offset = canvas.offset(), x, y;
+                            x = e.pageX - offset.left;
+                            y = e.pageY - offset.top;
+                            if (seed.hover(x, y)) {
+                                hold = 0;
+                                canvas.unbind("click");
+                                canvas.unbind("mousemove");
+                                canvas.removeClass('hand');
+                            }
+                        }).mousemove(function (e) {
+                            var offset = canvas.offset(), x, y;
+                            x = e.pageX - offset.left;
+                            y = e.pageY - offset.top;
+                            canvas.toggleClass('hand', seed.hover(x, y));
+                        });
+                        var seedAnimate = eval(Jscex.compile("async", function () {
+                            seed.draw();
+                            while (hold) {
+                                $await(Jscex.Async.sleep(10));
+                            }
+                            while (seed.canScale()) {
+                                seed.scale(0.95);
+                                $await(Jscex.Async.sleep(10));
+                            }
+                            while (seed.canMove()) {
+                                seed.move(0, 2);
+                                foot.draw();
+                                $await(Jscex.Async.sleep(10));
+                            }
+                        }));
+                        var growAnimate = eval(Jscex.compile("async", function () {
+                            do {
+                                tree.grow();
+                                $await(Jscex.Async.sleep(10));
+                            } while (tree.canGrow());
+                        }));
+                        var flowAnimate = eval(Jscex.compile("async", function () {
+                            do {
+                                tree.flower(2);
+                                $await(Jscex.Async.sleep(10));
+                            } while (tree.canFlower());
+                        }));
+                        var moveAnimate = eval(Jscex.compile("async", function () {
+                            tree.snapshot("p1", 240, 0, 610, 680);
+                            while (tree.move("p1", 500, 0)) {
+                                foot.draw();
+                                $await(Jscex.Async.sleep(10));
+                            }
+                            foot.draw();
+                            tree.snapshot("p2", 500, 0, 610, 680);
+                            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
+                            canvas.css("background", "#ffc0cb");
+                            $await(Jscex.Async.sleep(300));
+                            canvas.css("background", "none");
+                        }));
+                        var jumpAnimate = eval(Jscex.compile("async", function () {
+                            var ctx = tree.ctx;
+                            while (true) {
+                                tree.ctx.clearRect(0, 0, width, height);
+                                tree.jump();
+                                foot.draw();
+                                $await(Jscex.Async.sleep(25));
+                            }
+                        }));
+                        var textAnimate = eval(Jscex.compile("async", function () {
+                            var together = new Date();
+                            together.setFullYear(2025, 11, 27); // 27 Desember 2025
+                            together.setHours(0);
+                            together.setMinutes(0);
+                            together.setSeconds(0);
+                            together.setMilliseconds(0);
+                            $("#code").show().typewriter();
+                            $("#clock-box").fadeIn(500);
+                            while (true) {
+                                timeElapse(together);
+                                $await(Jscex.Async.sleep(1000));
+                            }
+                        }));
+                        var runAsync = eval(Jscex.compile("async", function () {
+                            $await(seedAnimate());
+                            $await(growAnimate());
+                            $await(flowAnimate());
+                            $await(moveAnimate());
+                            textAnimate().start();
+                            $await(jumpAnimate());
+                        }));
+                        runAsync().start();
+                    })();
+                    // Pastikan audio diputar setelah halaman kedua muncul
+                    document.getElementById('media').play();
+                }, 3000); // Delay 3 detik untuk loading heart sebelum ke second-page
+            }, 5000); // Delay 5 detik untuk "I knew it"
+        });
+    </script>
+</body>
+</html>
